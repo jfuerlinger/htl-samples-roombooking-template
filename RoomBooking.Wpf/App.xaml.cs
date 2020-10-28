@@ -11,6 +11,10 @@ namespace RoomBooking.Wpf
   {
     public App()
     {
+    }
+
+    private void Application_Startup(object sender, StartupEventArgs e)
+    {
       WindowController controller = new WindowController();
       var mainViewModel = new MainViewModel(controller);
       controller.ShowWindow(mainViewModel, false);
