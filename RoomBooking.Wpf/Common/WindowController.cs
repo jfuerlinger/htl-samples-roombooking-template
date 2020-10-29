@@ -3,7 +3,6 @@ using RoomBooking.Wpf.ViewModels;
 using RoomBooking.Wpf.Views;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace RoomBooking.Wpf.Common
@@ -29,7 +28,14 @@ namespace RoomBooking.Wpf.Common
       _windows[viewModel] = window;
 
       window.DataContext = viewModel;
-      window.Show();
+      if (showAsDialog)
+      {
+        window.ShowDialog();
+      }
+      else
+      {
+        window.Show();
+      }
     }
 
     public void CloseWindow(BaseViewModel viewModel)
