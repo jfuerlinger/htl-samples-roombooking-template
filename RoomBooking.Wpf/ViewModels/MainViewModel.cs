@@ -13,17 +13,19 @@ namespace RoomBooking.Wpf.ViewModels
     {
     }
 
-    public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    private Task LoadDataAsync()
     {
       throw new NotImplementedException();
     }
 
-    public override async Task InitAsync()
+    public static async Task<MainViewModel> CreateAsync(IWindowController windowController)
     {
-      await LoadDataAsync();
+      var viewModel = new MainViewModel(windowController);
+      await viewModel.LoadDataAsync();
+      return viewModel;
     }
 
-    private async Task LoadDataAsync()
+    public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
       throw new NotImplementedException();
     }

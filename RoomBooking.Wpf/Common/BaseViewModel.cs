@@ -28,8 +28,6 @@ namespace RoomBooking.Wpf.Common
       Errors = new Dictionary<string, List<string>>();
     }
 
-    public abstract Task InitAsync();
-
     #region Validation
 
     // Validation in Wrapper-Basisklasse auslagern!

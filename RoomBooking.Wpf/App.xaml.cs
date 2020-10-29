@@ -13,12 +13,11 @@ namespace RoomBooking.Wpf
     {
     }
 
-    private void Application_Startup(object sender, StartupEventArgs e)
+    private async void Application_Startup(object sender, StartupEventArgs e)
     {
       WindowController controller = new WindowController();
-      var mainViewModel = new MainViewModel(controller);
+      var mainViewModel = await MainViewModel.CreateAsync(controller);
       controller.ShowWindow(mainViewModel, false);
-      Dispatcher.Invoke(async () => await mainViewModel.InitAsync());
     }
   }
 }
