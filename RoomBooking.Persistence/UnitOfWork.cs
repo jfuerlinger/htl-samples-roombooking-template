@@ -2,6 +2,7 @@
 using RoomBooking.Core.Contracts;
 using RoomBooking.Core.Entities;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -54,11 +55,11 @@ namespace RoomBooking.Persistence
           var bookingForRoomTo = DateTime.Parse(bookingForRoom.To);
           if (bookingFrom >= bookingForRoomFrom && bookingFrom <= bookingForRoomTo)
           {
-            throw new ValidationException($"Es gibt schon eine Buchung von {bookingForRoom.Customer.LastName} von {bookingForRoom.From} bis {bookingForRoom.To} ", null, "From");
+            throw new ValidationException($"Es gibt schon eine Buchung von {bookingForRoom.Customer.LastName} von {bookingForRoom.From} bis {bookingForRoom.To} ", null, new List<string> { "From" });
           }
           if (bookingTo >= bookingForRoomFrom && bookingTo <= bookingForRoomTo)
           {
-            throw new ValidationException($"Es gibt schon eine Buchung von {bookingForRoom.Customer.LastName} von {bookingForRoom.From} bis {bookingForRoom.To} ", null, "To");
+            throw new ValidationException($"Es gibt schon eine Buchung von {bookingForRoom.Customer.LastName} von {bookingForRoom.From} bis {bookingForRoom.To} ", null, new List<string> { "To" });
           }
         }
       }
